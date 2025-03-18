@@ -1,6 +1,6 @@
 import { INodeType, INodeTypeDescription } from "n8n-workflow";
 
-import * as account from './actions/account';
+import * as reseller from './actions/reseller';
 
 export class CloudAlly implements INodeType {
 	description: INodeTypeDescription = {
@@ -9,7 +9,7 @@ export class CloudAlly implements INodeType {
 		icon: 'file:cloudally.svg',
 		group: ['transform'],
 		version: 1,
-		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+		subtitle: '={{$parameter["operation"]}}: {{$parameter["resourceType"]}} {{$parameter["resource"]}}',
 		description: 'Work with the CloudAlly API',
 		defaults: {
 			name: 'CloudAlly',
@@ -23,69 +23,41 @@ export class CloudAlly implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: "=https://api.cloudally.com/v2",
+			baseURL: "https://api.cloudally.com/v2",
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept': 'application/json',
-				'Authorization': '={{$credentials.accessToken}}',
-				'client-id': '={{$credentials.clientId}}',
-				'client-secret': '={{$credentials.clientSecret}}',
-			}
+				'Authorization': "={{$credentials.accessToken}}",
+				'client-id': "={{$credentials.clientId}}",
+				'client-secret': "={{$credentials.clientSecret}}",
+			},
 		},
 		properties: [
 			{
-				displayName: 'Resource',
-				name: 'resource',
+				displayName: 'Resource Type',
+				name: 'resourceType',
 				type: 'options',
 				noDataExpression: true,
 				options: [
-					{ name: 'Account', value: 'account' }
+					{ name: 'Reseller', value: 'reseller'},
 				],
-				default: 'account',
+				default: 'reseller',
+				routing: {
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: { property: 'data' },
+							}
+						],
+					}
+				}
 			},
-			...account.description,
+			...reseller.description,
 		],
 	};
 	methods = {
 		loadOptions: {
 		},
-		// credentialTest: {
-		// 	async cloudAllyApiCredentialTest(
-		// 		this: ICredentialTestFunctions,
-		// 		credential: ICredentialsDecrypted,
-		// 	): Promise<INodeCredentialTestResult> {
-		// 		const { accessToken, clientId, clientSecret } = credential.data as {
-		// 			accessToken: string,
-		// 			clientId: string,
-		// 			clientSecret: string,
-		// 		};
-		// 		console.log("[CLOUDALLY] Testing credentials");
-		// 		try {
-		// 			await this.helpers.request({
-		// 				url: "https://api.cloudally.com/v2/resellers/details",
-		// 				method: 'GET',
-		// 				headers: {
-		// 					'Content-Type': 'application/json',
-		// 					'Authorization': accessToken,
-		// 					'client-id': clientId,
-		// 					'client-secret': clientSecret,
-		// 				},
-		// 			});
-		// 		} catch(error) {
-		// 			console.log("[CLOUDALLY] Failed...")
-		// 			if (error.statusCode === 401) {
-		// 				return {
-		// 					status: 'Error',
-		// 					message: 'The credentials included in the request are invalid',
-		// 				};
-		// 			}
-		// 		};
-
-		// 		return {
-		// 			status: 'OK',
-		// 			message: 'Connection successful!'
-		// 		}
-		// 	},
-		// },
 	};
 }

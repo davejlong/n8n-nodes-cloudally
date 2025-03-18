@@ -43,14 +43,13 @@ export class CloudAllyApi implements ICredentialType {
 				expirable: true,
 				password: true,
 			},
-			default: null,
+			default: '',
 		},
 	];
 	async preAuthentication(
 		this: IHttpRequestHelper,
 		credentials: ICredentialDataDecryptedObject
 	) {
-		console.log("[CLOUDALLY] pre authentication");
 		const { accessToken } = (await this.helpers.httpRequest({
 			method: 'POST',
 			url: 'https://api.cloudally.com/v2/auth/partner',
@@ -81,21 +80,10 @@ export class CloudAllyApi implements ICredentialType {
 			}
 		}
 	}
-
 	test: ICredentialTestRequest = {
 		request: {
-			//baseURL: 'https://api.cloudally.com/v2/',
-			baseURL: 'https://eopnukr7e5web23.m.pipedream.net/v2',
-			url: '/auth/partner',
-			method: 'POST',
-			headers: {
-				'client-id': "={{$credentials.clientId}}",
-				'client-secret': "={{$credentials.clientSecret}}",
-			},
-			body: {
-				email: "={{$credentials.email}}",
-				password: "={{$credentials.password}}",
-			},
+			baseURL: 'https://api.cloudally.com/v2',
+			url: '/user'
 		}
 	}
 }

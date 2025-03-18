@@ -8,19 +8,21 @@ const description: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
+				resourceType: ['reseller'],
 				resource: ['account'],
 			},
 		},
 		routing: {
 			request: {
-				url: '/resellers/accounts'
+				url: '/resellers/accounts',
+
 			},
 		},
 		options: [
 			{
 				name: 'Get Many',
 				value: 'getAll',
-				action: 'Get many',
+				action: 'Get many accounts',
 			},
 		],
 		default: 'getAll'
