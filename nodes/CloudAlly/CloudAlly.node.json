@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-cloudally",
+	"nodeVersion": "0.1",
+	"codexVersion": "0.1",
+	"categories": ["Cybersecurity"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/davejlong/n8n-nodes-cloudally"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/davejlong/n8n-nodes-cloudally"
+			}
+		]
+	}
+}
