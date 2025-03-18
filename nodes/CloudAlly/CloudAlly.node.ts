@@ -18,7 +18,7 @@ export class CloudAlly implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'cloudAllyApi',
+				name: 'cloudAllyPartnerApi',
 				required: true,
 			},
 		],
