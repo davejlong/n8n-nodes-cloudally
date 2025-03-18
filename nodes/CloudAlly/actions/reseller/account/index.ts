@@ -15,7 +15,6 @@ const description: INodeProperties[] = [
 		routing: {
 			request: {
 				url: '/resellers/accounts',
-
 			},
 		},
 		options: [
