@@ -37,7 +37,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credetnails/cloudAllyPartnerApi.credentials.js"
+      "dist/credetnails/CloudAllyPartnerApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/cloudally/CloudAlly.node.js"

@@ -1,6 +1,6 @@
 import { IAuthenticateGeneric, ICredentialDataDecryptedObject, ICredentialTestRequest, ICredentialType, IHttpRequestHelper, INodeProperties } from "n8n-workflow";
 
-export class cloudAllyPartnerApi implements ICredentialType {
+export class CloudAllyPartnerApi implements ICredentialType {
 	name = 'cloudAllyPartnerApi';
 	displayName = 'CloudAlly Partner API';
 	documentationUrl = 'https://github.com/davejlong/n8n-nodes-cloudally';
@@ -83,7 +83,7 @@ export class cloudAllyPartnerApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'https://api.cloudally.com/v2',
-			url: '/user'
+			url: '/resellers/details'
 		}
 	}
 }
