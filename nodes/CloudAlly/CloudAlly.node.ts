@@ -1,6 +1,7 @@
 import { INodeType, INodeTypeDescription } from "n8n-workflow";
 
 import * as reseller from './actions/reseller';
+import { getAccounts } from "./utilities/GenericFunctions";
 
 export class CloudAlly implements INodeType {
 	description: INodeTypeDescription = {
@@ -58,6 +59,7 @@ export class CloudAlly implements INodeType {
 	};
 	methods = {
 		loadOptions: {
+			getAccounts,
 		},
 	};
 }
