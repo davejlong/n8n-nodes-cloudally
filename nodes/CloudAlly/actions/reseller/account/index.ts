@@ -16,6 +16,9 @@ const description: INodeProperties[] = [
 			request: {
 				url: '/resellers/accounts',
 			},
+			send: {
+				paginate: true,
+			}
 		},
 		options: [
 			{

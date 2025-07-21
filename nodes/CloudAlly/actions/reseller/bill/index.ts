@@ -15,8 +15,10 @@ const description: INodeProperties[] = [
 		routing: {
 			request: {
 				url: '/resellers/bills',
-
 			},
+			send: {
+				paginate: true,
+			}
 		},
 		options: [
 			{

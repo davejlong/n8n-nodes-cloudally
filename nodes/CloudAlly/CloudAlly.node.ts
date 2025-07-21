@@ -1,7 +1,7 @@
 import { INodeType, INodeTypeDescription } from "n8n-workflow";
 
 import * as reseller from './actions/reseller';
-import { getAccounts } from "./utilities/GenericFunctions";
+import { cloudAllyApiPagination, getAccounts } from "./utilities/GenericFunctions";
 
 export class CloudAlly implements INodeType {
 	description: INodeTypeDescription = {
@@ -33,6 +33,9 @@ export class CloudAlly implements INodeType {
 				'client-secret': "={{$credentials.clientSecret}}",
 			},
 		},
+		requestOperations: {
+			pagination: cloudAllyApiPagination,
+		},
 		properties: [
 			{
 				displayName: 'Resource Type',
@@ -43,16 +46,6 @@ export class CloudAlly implements INodeType {
 					{ name: 'Reseller', value: 'reseller'},
 				],
 				default: 'reseller',
-				routing: {
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'data' },
-							}
-						],
-					}
-				}
 			},
 			...reseller.description,
 		],

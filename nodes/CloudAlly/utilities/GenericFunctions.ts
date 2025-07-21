@@ -68,10 +68,12 @@ export async function cloudAllyApiPagination(
 	requestData.options.qs = requestData.options.qs ?? {};
 	let responseTotal = 0;
 
+	this.logger.debug('CLOUDALLY: Paginated Request options: ', requestData.options)
+
 	do {
 		const pageResponseData: INodeExecutionData[] = await this.makeRoutingRequest(requestData);
 
-		this.logger.debug('CLOUDALLY: Paginated request', pageResponseData);
+		// this.logger.debug('CLOUDALLY: Paginated request', pageResponseData);
 
 		const items = pageResponseData[0].json[rootProperty] as [];
 		items.forEach((item) => responseData.push({ json: item }));

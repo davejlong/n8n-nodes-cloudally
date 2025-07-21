@@ -1,6 +1,7 @@
 import { INodeProperties } from "n8n-workflow";
-import { pagination } from "../../../utilities/GenericProperties";
-import { getAccountsProperty } from "../../../utilities/GenericFunctions";
+
+import { statuses } from "./statuses";
+import { tasks } from "./tasks";
 
 export const description: INodeProperties[] = [
 	{
@@ -26,10 +27,17 @@ export const description: INodeProperties[] = [
 					send: {
 						paginate: true,
 					},
-					operations: {
-						...pagination,
-					},
 				},
+			},
+			{
+				name: 'Get Backup Task',
+				value: 'getTask',
+				action: 'Get one backup task',
+				routing: {
+					request: {
+						url: '/backup-tasks',
+					}
+				}
 			},
 			{
 				name: 'Get Backup Tasks',
@@ -42,60 +50,11 @@ export const description: INodeProperties[] = [
 					send: {
 						paginate: true,
 					},
-					operations: {
-						...pagination,
-					},
 				}
 			},
 		],
 		default: 'getTasks',
 	},
-	{
-		displayName: 'Get All Accounts',
-		description: 'Whether to get items for all accounts or filter by account',
-		name: 'allAccounts',
-		type: 'boolean',
-		default: true,
-		displayOptions: {
-			show: {
-				resourceType: ['reseller'],
-				resource: ['backup'],
-				operation: ['getTasks'],
-			}
-		},
-		routing: {
-			request: {
-				baseURL: "https://api.cloudally.com/v2/resellers/accounts",
-			}
-		}
-	},
-	getAccountsProperty({
-		show: {
-			resourceType: ['reseller'],
-			resource: ['backup'],
-			operation: ['getTasks'],
-		},
-		hide: {
-			allAccounts: [true]
-		}
-	}),
-	{
-		displayName: 'Task ID',
-		description: 'Backup Task ID',
-		name: 'taskId',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resourceType: ['reseller'],
-				resource: ['backup'],
-				operation: ['getTasks'],
-			},
-		},
-		routing: {
-			request: {
-				url: "=/backup-tasks{{$value}}",
-			},
-		},
-	},
+	...statuses,
+	...tasks,
 ];
