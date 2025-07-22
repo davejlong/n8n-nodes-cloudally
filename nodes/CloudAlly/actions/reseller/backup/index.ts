@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 				action: 'Get backup statuses',
 				routing: {
 					request: {
-						url: '/backup-statuses',
+						url: '/resellers/accounts/backup-statuses',
 					},
 					send: {
 						paginate: true,
