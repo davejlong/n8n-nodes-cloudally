@@ -2,12 +2,18 @@
 
 This is an n8n community node to work with the CloudAlly API in your n8n workflows.
 
-- [Installation](#installation)
-- [Operations](#operations)
-- [Credentials](#credentials)
-- [Compatibility](#compatibility)
-- [Resources](#resources)
-- [Funding](#funding)
+- [n8n-nodes-cloudally](#n8n-nodes-cloudally)
+	- [Installation](#installation)
+	- [Operations](#operations)
+		- [Resellers](#resellers)
+			- [Accounts](#accounts)
+			- [Backup Tasks](#backup-tasks)
+			- [Backup Status](#backup-status)
+			- [Bills](#bills)
+	- [Credentials](#credentials)
+	- [Compatibility](#compatibility)
+	- [Resources](#resources)
+	- [Funding](#funding)
 
 ## Installation
 
@@ -23,10 +29,14 @@ The CloudAlly API is built for working with 3 types of accounts: standard accoun
 
 * Get All - Get information about all CloudAlly accounts
 
-#### Backups
+#### Backup Tasks
 
-* Get Backup Tasks - Get information about all backup tasks
-* Get Backup Statuses - Get the status of backup tasks
+* Get All - Get information about all backup tasks or tasks for a specific account
+* Get - Get individual backup tasks by Account and ID
+
+#### Backup Status
+
+* Get All - Get status of all backup tasks
 
 #### Bills
 
