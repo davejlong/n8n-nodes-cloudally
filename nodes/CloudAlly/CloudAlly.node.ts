@@ -43,7 +43,15 @@ export class CloudAlly implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [
-					{ name: 'Reseller', value: 'reseller'},
+					{
+						name: 'Reseller',
+						value: 'reseller',
+						routing: {
+							request: {
+								baseURL: '=https://api.cloudally.com/v2/resellers'
+							}
+						}
+					},
 				],
 				default: 'reseller',
 			},

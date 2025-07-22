@@ -14,7 +14,7 @@ const description: INodeProperties[] = [
 		},
 		routing: {
 			request: {
-				url: '/resellers/accounts',
+				url: '/accounts',
 			},
 			send: {
 				paginate: true,
@@ -25,6 +25,7 @@ const description: INodeProperties[] = [
 				name: 'Get Many',
 				value: 'getAll',
 				action: 'Get many accounts',
+				description: '/Retrieve many bills'
 			},
 		],
 		default: 'getAll'

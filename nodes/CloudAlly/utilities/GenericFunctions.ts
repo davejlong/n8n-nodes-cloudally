@@ -120,10 +120,10 @@ export function getAccountsProperty(displayOptions:IDisplayOptions): INodeProper
 		},
 		default: '',
 		displayOptions,
-		routing: {
-			request: {
-				baseURL: "=https://api.cloudally.com/v2/resellers/accounts/{{$value}}"
-			},
-		},
+		// routing: {
+		// 	request: {
+		// 		baseURL: "=https://api.cloudally.com/v2/resellers/accounts/{{$value}}"
+		// 	},
+		// },
 	};
 }

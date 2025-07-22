@@ -1,6 +1,6 @@
 import { INodeProperties } from "n8n-workflow";
 
-const description: INodeProperties[] = [
+export const description: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -9,27 +9,25 @@ const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resourceType: ['reseller'],
-				resource: ['bill'],
+				resource: ['backupStatus'],
 			},
 		},
 		routing: {
 			request: {
-				url: '/bills',
+				url: '/accounts/backup-statuses',
 			},
 			send: {
 				paginate: true,
-			}
+			},
 		},
 		options: [
 			{
 				name: 'Get Many',
 				value: 'getAll',
-				action: 'Get many bills',
-				description: 'Retrieve many bills'
-			},
+				action: 'Get many backup statuses',
+				description: 'Retrieve status of many backup tasks',
+			}
 		],
 		default: 'getAll'
-	},
+	}
 ];
-
-export { description };
