@@ -1,6 +1,6 @@
 {
 	"node": "n8n-nodes-cloudally",
-	"nodeVersion": "0.1",
+	"nodeVersion": "0.2",
 	"codexVersion": "0.1",
 	"categories": ["Cybersecurity"],
 	"resources": {

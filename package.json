@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-cloudally",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An n8n node to work with the CloudAlly API",
   "keywords": [
     "n8n-community-node-package",
